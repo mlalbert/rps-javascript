@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>RPS | Home</title>
 </head>
+
 <body>
     <script>
-    function computerPlay(){
-        let compArray = ['Rock', 'Paper', 'Scissors'];
-        return compArray[Math.floor(Math.random()*compArray.length)];
-    }
-    function playRound(playerChoice, computerChoice){
-        let playerChoiceHolder = playerChoice.toLowerCase();
-        let computerChoiceHolder = computerChoice.toLowerCase();
-        if (playerChoiceHolder == computerChoiceHolder){
-            console.log('Equal');
+        function computerPlay() {
+            let compArray = ['Rock', 'Paper', 'Scissors'];
+            return compArray[Math.floor(Math.random() * compArray.length)];
         }
-    }
-    playRound('RocK', computerPlay());
+
+        function game(playerSelect, computerSelect) {
+            let playerChoiceHolder = playerSelect.toLowerCase();
+            let computerChoiceHolder = computerSelect.toLowerCase();
+
+            if (playerChoiceHolder == computerChoiceHolder) {
+                return "It's a draw! You both chose " + playerChoiceHolder.charAt(0).toUpperCase() + playerChoiceHolder
+                    .slice(1) + '!';
+            } else if ((playerChoiceHolder == 'rock' && computerChoiceHolder == 'paper') ||
+                (playerChoiceHolder == 'paper' && computerChoiceHolder == 'scissors') ||
+                (playerChoiceHolder == 'scissors' && computerChoiceHolder == 'rock')) {
+                return 'You lose! ' + computerChoiceHolder.charAt(0).toUpperCase() + computerChoiceHolder
+                    .slice(1) + ' beats ' + playerChoiceHolder.charAt(0).toUpperCase() + playerChoiceHolder
+                    .slice(1) + '!';
+            } else if ((playerChoiceHolder == 'rock' && computerChoiceHolder == 'scissors') ||
+                (playerChoiceHolder == 'paper' && computerChoiceHolder == 'rock') ||
+                (playerChoiceHolder == 'scissors' && computerChoiceHolder == 'paper')) {
+                return 'You win! ' + playerChoiceHolder.charAt(0).toUpperCase() + playerChoiceHolder.slice(1) +
+                    ' beats ' + computerChoiceHolder.charAt(0).toUpperCase() + computerChoiceHolder.slice(1) + '!'
+            }
+        }
+       
+        let oneround = prompt('Rock, Paper or Scissors?');
+        window.alert(game(oneround, computerPlay()));
     </script>
 </body>
+
 </html>
