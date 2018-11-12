@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RPS | Home</title>
+</head>
+<body>
+    <script>
+    function computerPlay(){
+        let compArray = ['Rock', 'Paper', 'Scissors'];
+        return compArray[Math.floor(Math.random()*compArray.length)];
+    }
+    function playRound(playerChoice, computerChoice){
+        let playerChoiceHolder = playerChoice.toLowerCase();
+        let computerChoiceHolder = computerChoice.toLowerCase();
+        if (playerChoiceHolder == computerChoiceHolder){
+            console.log('Equal');
+        }
+    }
+    playRound('RocK', computerPlay());
+    </script>
+</body>
+</html>
