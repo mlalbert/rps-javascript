@@ -12,29 +12,61 @@
             return compArray[Math.floor(Math.random() * compArray.length)];
         }
 
-        function game(playerSelect, computerSelect) {
-            let playerChoiceHolder = playerSelect.toLowerCase();
-            let computerChoiceHolder = computerSelect.toLowerCase();
+        function game() {
+            let playerScore = 0;
+            let compScore = 0;
+            let playerSelect = null;
+            let computerSelect = null;
+            let playerChoiceHolder = null;
+            let computerChoiceHolder = null;
+            let round = 0;
 
-            if (playerChoiceHolder == computerChoiceHolder) {
-                return "It's a draw! You both chose " + playerChoiceHolder.charAt(0).toUpperCase() + playerChoiceHolder
-                    .slice(1) + '!';
-            } else if ((playerChoiceHolder == 'rock' && computerChoiceHolder == 'paper') ||
-                (playerChoiceHolder == 'paper' && computerChoiceHolder == 'scissors') ||
-                (playerChoiceHolder == 'scissors' && computerChoiceHolder == 'rock')) {
-                return 'You lose! ' + computerChoiceHolder.charAt(0).toUpperCase() + computerChoiceHolder
-                    .slice(1) + ' beats ' + playerChoiceHolder.charAt(0).toUpperCase() + playerChoiceHolder
-                    .slice(1) + '!';
-            } else if ((playerChoiceHolder == 'rock' && computerChoiceHolder == 'scissors') ||
-                (playerChoiceHolder == 'paper' && computerChoiceHolder == 'rock') ||
-                (playerChoiceHolder == 'scissors' && computerChoiceHolder == 'paper')) {
-                return 'You win! ' + playerChoiceHolder.charAt(0).toUpperCase() + playerChoiceHolder.slice(1) +
-                    ' beats ' + computerChoiceHolder.charAt(0).toUpperCase() + computerChoiceHolder.slice(1) + '!'
+
+                
+                
+                
+                
+            for (let index = 0; index <= 5; index++) {
+                do {
+                    playerSelect = prompt('Rock, Paper or Scissors?');
+                    playerChoiceHolder = playerSelect.toLowerCase();
+                } while (playerChoiceHolder !== 'rock' && playerChoiceHolder !== 'scissors' && playerChoiceHolder !== 'paper');
+
+                computerSelect = computerPlay();
+                computerChoiceHolder = computerSelect.toLowerCase();
+                
+                if (playerChoiceHolder == computerChoiceHolder) {
+                    alert("It's a draw! You both chose " + playerChoiceHolder.charAt(0).toUpperCase() +
+                        playerChoiceHolder.slice(1) + '!');
+
+                } else if ((playerChoiceHolder == 'rock' && computerChoiceHolder == 'paper') ||
+                    (playerChoiceHolder == 'paper' && computerChoiceHolder == 'scissors') ||
+                    (playerChoiceHolder == 'scissors' && computerChoiceHolder == 'rock')) {
+
+                    alert('You lose! Computer chose ' + computerChoiceHolder.charAt(0).toUpperCase() +
+                        computerChoiceHolder.slice(1) + '! ' + computerChoiceHolder.charAt(0).toUpperCase() +
+                        computerChoiceHolder.slice(1) + ' beats ' +
+                        playerChoiceHolder.charAt(0).toUpperCase() + playerChoiceHolder.slice(1) + '!');
+                        compScore += 1;
+                } else if ((playerChoiceHolder == 'rock' && computerChoiceHolder == 'scissors') ||
+                    (playerChoiceHolder == 'paper' && computerChoiceHolder == 'rock') ||
+                    (playerChoiceHolder == 'scissors' && computerChoiceHolder == 'paper')) {
+
+                    alert('You win! Computer chose ' + computerChoiceHolder.charAt(0).toUpperCase() +
+                        computerChoiceHolder.slice(1) + '! ' + playerChoiceHolder.charAt(0).toUpperCase() + playerChoiceHolder.slice(1) +'  beats ' + 
+                        computerChoiceHolder.charAt(0).toUpperCase() + computerChoiceHolder.slice(1) +'!');
+                        playerScore += 1;
+                } 
             }
+                
+            if (playerScore < compScore) {
+                alert('You Lose! ' + 'Player: ' + playerScore + ' Computer: ' + compScore);
+            } else if (playerScore > compScore) {
+                alert('You Win! ' + 'Player: ' + playerScore + ' Computer: ' + compScore);
+            }else alert('Draw! ' + 'Player: ' + playerScore + ' Computer: ' + compScore);
+            
         }
-       
-        let oneround = prompt('Rock, Paper or Scissors?');
-        window.alert(game(oneround, computerPlay()));
+        game();
     </script>
 </body>
 
